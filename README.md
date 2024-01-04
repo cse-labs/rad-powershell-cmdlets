@@ -1,14 +1,18 @@
-# Project
+# RAD PowerShell Cmdlets
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+## Overview
 
-As the maintainer of this project, please make a few updates:
+The Robust Adaptive Dynamic (RAD) PowerShell Cmdlets is a comprehensive collection of Cmdlets designed to elevate the engineering fundamentals of your PowerShell projects. These Cmdlets aim to enhance the overall production readiness of your scripts, covering various aspects of the covering various aspects of the development process, including error handling, logging, testing, and deployment. 
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+These RAD PowerShell Cmdlets, are based in real-world projects, and aim to improve the reliability, maintainability, and scalability of your PowerShell projects.
+
+## Usage
+
+The RAD PowerShell Cmdlets offer a holistic set of tools to enhance the engineering fundamentals of your PowerShell projects. Covering error handling, logging, and various other aspects, these Cmdlets enable you to productionalize your scripts effectively.
+
+For detailed guidance on integrating these Cmdlets into your projects and maximizing their benefits, please refer to the comprehensive documentation within each section and script file.
+
+* [Error handling](/errorhandling/README.md)
 
 ## Contributing
 

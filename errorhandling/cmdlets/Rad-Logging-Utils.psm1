@@ -2,10 +2,6 @@
 #  Copyright (c) Microsoft Corporation.  All rights reserved.
 #  Licensed under the MIT License (MIT). See License.txt in the repo root for license information.
 # ------------------------------------------------------------
-# ------------------------------------------------------------
-#  Copyright (c) Microsoft Corporation.  All rights reserved.
-#  Licensed under the MIT License (MIT). See License.txt in the repo root for license information.
-# ------------------------------------------------------------
 
 #.Description
 # Function to get logs path and create a folder if one does not exist
@@ -54,7 +50,7 @@ Function Get-DefaultLoggingConfiguration {
     # while Information and higher level messages will be written to the console by default.
     $LoggerConfig = New-Logger |
         Set-MinimumLevel -Value Debug |
-        Add-SinkFile -Path (Join-Path -Path $LogDir -ChildPath $Prefix + ".log") -OutputTemplate '{Timestamp:HH:mm:ss} [{Level:u3}] {Properties:j} {Message:lj} {NewLine}' -RollingInterval Day
+        Add-SinkFile -Path (Join-Path -Path $LogDir -ChildPath ($Prefix + ".log")) -OutputTemplate '{Timestamp:HH:mm:ss} [{Level:u3}] {Properties:j} {Message:lj} {NewLine}' -RollingInterval Day
 
     # If script name is provided, add it to the logger properties
     if ($Null -ne $ScriptName -and $ScriptName -ne '') {
@@ -63,7 +59,7 @@ Function Get-DefaultLoggingConfiguration {
 
     # If additional properties are provided, add them to the logger properties
     if (@{} -ne $Properties) {
-        foreach ($Property in $Properties.GetEnumerator()) {
+        foreach ($Property in $Properties) {
             $LoggerConfig = $LoggerConfig | Add-EnrichWithProperty -Name $Property.Key -Value $Property.Value
         }
     }

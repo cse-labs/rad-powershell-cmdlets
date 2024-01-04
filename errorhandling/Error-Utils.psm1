@@ -27,7 +27,7 @@ function Get-RadErrorMessage {
         [string[]]$Parameters
     )
 
-    $ErrorMessages = $RadErrorMessageManager::$ErrorMessages
+    $ErrorMessages = Get-RadErrorMessages
 
     if ($ErrorMessages.ContainsKey($ErrorCode)) {
         $formattedMessage = Format-ErrorMessage -Template $ErrorMessages[$ErrorCode] -Parameters $Parameters
@@ -82,7 +82,7 @@ function Invoke-TerminatingCommand {
         # Check the execution status of the command
         if ($LASTEXITCODE -ne 0) {
             $ErrorParameters+= ${Result}
-            Show-FatalError (Get-ErrorMessage -ErrorCode $ErrorCode -Parameters @($ErrorParameters))
+            Show-FatalError (Get-RadErrorMessage -ErrorCode $ErrorCode -Parameters @($ErrorParameters))
         }
         else {
             Show-Output "Command executed successfully."
@@ -93,11 +93,48 @@ function Invoke-TerminatingCommand {
         if ($_ -like "*Error $ErrorCode*") {
             throw $_
         } else {
-            Show-FatalError (Get-ErrorMessage -ErrorCode '500' -Parameters @($Command, $_))
+            Show-FatalError (Get-RadErrorMessage -ErrorCode '500' -Parameters @($Command, $_))
         }
     }
 }
 
-Export-ModuleMember -Function Get-ErrorMessage
-Export-ModuleMember -Function Format-ErrorMessage
+class RadErrorMessageManager {
+    # Static property to store error codes
+    static [System.Collections.Generic.Dictionary[string, string]] $ErrorMessages = @{
+        "101" = "Error 102: Invalid parameter: {0}. Expected: {1}. Actual: {2}."
+        "500" = "An unexpected error occurred while executing the command: [{0}]. Error message: [{1}]"
+    }
+
+    # Static method to override error codes from a YAML file
+    static [void] LoadErrorCodesFromYaml($yamlFilePath) {
+        try {
+            $yamlContent = Get-Content -Path $yamlFilePath -Raw | ConvertFrom-Yaml
+            if ($yamlContent -is [System.Collections.Hashtable]) {
+                [RadErrorMessageManager]::ErrorMessages = $yamlContent
+            } else {
+                Write-Host "Invalid YAML format. Expected a hashtable."
+            }
+        } catch {
+            Write-Host "Error reading YAML file: $_"
+        }
+    }
+}
+
+function Get-RadErrorMessages {
+    return RadErrorMessageManager::$ErrorMessages
+}
+
+function Import-RadErrorsFromYaml {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$YamlFilePath,
+    )
+
+    return RadErrorMessageManager::LoadErrorCodesFromYaml($YamlFilePath)
+}
+
+Export-ModuleMember -Function Get-RadErrorMessage
+Export-ModuleMember -Function Format-RadErrorMessage
 Export-ModuleMember -Function Invoke-TerminatingCommand
+Export-ModuleMember -Function Get-RadErrorMessages
+Export-ModuleMember -Function Import-RadErrorsFromYaml

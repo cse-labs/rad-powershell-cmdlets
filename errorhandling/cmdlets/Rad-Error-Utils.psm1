@@ -105,6 +105,7 @@ class RadErrorMessageManager {
 
     # Override error codes from a YAML file
     [void] LoadErrorCodesFromYaml($yamlFilePath) {
+        Import-Module -Name PowerShellYaml
         $yamlContent = Get-Content -Path $yamlFilePath -Raw | ConvertFrom-Yaml
 
         if ($yamlContent -and $yamlContent.errors) {
@@ -127,9 +128,29 @@ function Import-RadErrorsFromYaml {
 
     return [RadErrorMessageManager]::Instance.LoadErrorCodesFromYaml($YamlFilePath)
 }
+function Set-RadErrorMessages {
+    param (
+        [Parameter(Mandatory=$true)]
+        [System.Collections.HashTable]$NewErrorMessages,
+
+        [Parameter(Mandatory=$false)]
+        [switch]$Overwrite
+    )
+
+    if ($Overwrite) {
+        [RadErrorMessageManager]::Instance.ErrorMessages = $NewErrorMessages
+    } else {
+        foreach ($key in $NewErrorMessages.Keys) {
+            [RadErrorMessageManager]::Instance.ErrorMessages[$key] = $NewErrorMessages[$key]
+        }
+    }
+
+    return [RadErrorMessageManager]::Instance.ErrorMessages.GetEnumerator() | Sort-Object -Property Key
+}
 
 Export-ModuleMember -Function Get-RadErrorMessage
 Export-ModuleMember -Function Format-RadErrorMessage
 Export-ModuleMember -Function Invoke-TerminatingCommand
 Export-ModuleMember -Function Get-RadErrorMessages
 Export-ModuleMember -Function Import-RadErrorsFromYaml
+Export-ModuleMember -Function Set-RadErrorMessages

@@ -127,7 +127,7 @@ function Get-RadErrorMessages {
 function Import-RadErrorsFromYaml {
     param (
         [Parameter(Mandatory=$true)]
-        [string]$YamlFilePath,
+        [string]$YamlFilePath
     )
 
     return RadErrorMessageManager::LoadErrorCodesFromYaml($YamlFilePath)

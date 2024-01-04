@@ -28,12 +28,6 @@ function Get-RadErrorMessage {
     )
 
     $ErrorMessages = Get-RadErrorMessages
-
-    $ErrorMessages.GetEnumerator() | ForEach-Object {
-        Write-Host "$($_.Key): $($_.Value)"
-    }
-
-    Write-Host $ErrorCode
     
     if ($ErrorMessages.ContainsKey($ErrorCode)) {
         $formattedMessage = Format-RadErrorMessage -Template $ErrorMessages[$ErrorCode] -Parameters $Parameters
@@ -126,7 +120,6 @@ function Import-RadErrorsFromYaml {
         [string]$YamlFilePath
     )
 
-    Write-Host [RadErrorMessageManager]::Instance
     return [RadErrorMessageManager]::Instance.LoadErrorCodesFromYaml($YamlFilePath)
 }
 

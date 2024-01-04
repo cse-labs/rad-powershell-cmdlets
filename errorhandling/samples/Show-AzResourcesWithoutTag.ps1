@@ -15,13 +15,26 @@ Param(
 $ScriptName = $MyInvocation.MyCommand.Name
 
 . .\Init.ps1
+
+Show-Title "Getting Azure Resources Without Tag"
+Show-DebugOutput "Initializing logger"
+
 . .\Init-Logger.ps1 -DetailedOutput:$DetailedOutput -SilentMode:$SilentMode -ScriptName:$ScriptName
 
-# Authenticate to Azure (you may need to log in interactively if not already authenticated)
-Connect-AzAccount
+Show-Output "Connecting to Azure"
+
+Invoke-TerminatingCommand -Command { Connect-AzAccount } -ErrorCode 403
+
+Show-Output "Getting Az Resources"
+
+Invoke-TerminatingCommand -Command {
+    $resources = Get-AzResource
+} -ErrorCode 403
 
 # Iterate over all Azure resources
-foreach ($resource in Get-AzResource) {
+foreach ($resource in $resources) {
+    Show-DebugOutput "Processing resource $($resource.ResourceId) ..."
+
     # Check if the resource has tags
     if (-not $resource.Tags) {
         # Output the resource details or perform any desired action
@@ -30,4 +43,5 @@ foreach ($resource in Get-AzResource) {
 }
 
 # Disconnect from Azure (optional)
+Show-DebugOutput "Disconnecting from azure"
 Disconnect-AzAccount

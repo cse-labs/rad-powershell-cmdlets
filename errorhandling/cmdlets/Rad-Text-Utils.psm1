@@ -66,7 +66,7 @@ function Show-DebugOutput {
     if (Confirm-LoggerIsEnabled) {
         Write-DebugLog $Message
     } else {
-        Write-Debug $Output
+        Write-Debug $Message
     }
 }
 

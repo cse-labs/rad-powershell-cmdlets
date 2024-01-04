@@ -1,7 +1,8 @@
 # common_errors.yaml
 errors:
-  1000: "Unexpected error"
-  1001: "FileNotFoundError - Failure to locate or access a specified file or directory. [{0}]"
-  1004: "PermissionDeniedError - Insufficient permissions to perform the {0} operation."
-  1005: "TypeError - Mismatched data types or unsupported operations on a data type {0}."
-  1010: "Unsupported operation - The operation {0} is not supported."
+  500: "Unexpected error"
+  100: "FileNotFoundError - Failure to locate or access a specified file or directory. [{0}]"
+  101: "PermissionDeniedError - Insufficient permissions to perform the {0} operation."
+  102: "TypeError - Mismatched data types or unsupported operations on a data type {0}."
+  103: "Unsupported operation - The operation {0} is not supported."
+  403: "Authentication error - The user is not authenticated."

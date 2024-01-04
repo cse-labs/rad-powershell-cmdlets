@@ -14,14 +14,18 @@ Param(
 
   [string]
   [Parameter(mandatory=$False)]
-  $ScriptName = "utils"
+  $ScriptName = "utils",
+
+  [string[]]
+  [Parameter(mandatory=$False)]
+  $Properties = @{}
 )
 
 Close-Logger
 
 # Silent mode overrrides others
 if ($SilentMode) {
-    Get-LoggingConfiguration -ScriptName $ScriptName -DaefContext $DaefContext |
+    Get-LoggingConfiguration -ScriptName $ScriptName -Module $ScriptName -Properties $Properties |
         Start-Logger
 } else {
     if (-not $DetailedOutput) {
@@ -29,7 +33,7 @@ if ($SilentMode) {
     } else {
         $LogLevel = "Verbose"
     }
-    Get-LoggingConfiguration -ScriptName $ScriptName -DaefContext $DaefContext |
+    Get-LoggingConfiguration -ScriptName $ScriptName -Module $ScriptName -Properties $Properties |
             Add-SinkConsole -RestrictedToMinimumLevel $LogLevel |
             Start-Logger
 }

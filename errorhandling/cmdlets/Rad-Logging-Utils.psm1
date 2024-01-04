@@ -45,7 +45,7 @@ Function Get-DefaultLoggingConfiguration {
         [string[]]$Properties
     )
 
-    $LogDir = Get-LogDirectory
+    $LogDir = Get-LogDirectory -Module $Module
 
     $Prefix = $Module.ToLower() + '-'
 
@@ -83,7 +83,8 @@ Function Get-DefaultLoggingConfiguration {
 Function Get-LoggingConfiguration {
     param (
         [string]$ScriptName,
-        [object]$DaefContext
+        [string]$Module,
+        [string[]]$Properties
     )
 
     $CustomLoggingModulePath = Join-Path -Path (Get-Location) -ChildPath "CustomLogging.psm1"
@@ -99,7 +100,7 @@ Function Get-LoggingConfiguration {
     }
 
     # If no custom logging configuration is provided, return the default logging configuration
-    return Get-DefaultLoggingConfiguration -ScriptName $ScriptName -DaefContext $DaefContext
+    return Get-DefaultLoggingConfiguration -ScriptName $ScriptName -Module $Module
 }
 
 Export-ModuleMember -Function Get-LoggingConfiguration

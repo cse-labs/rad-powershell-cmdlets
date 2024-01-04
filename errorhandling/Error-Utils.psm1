@@ -27,44 +27,7 @@ function Get-RadErrorMessage {
         [string[]]$Parameters
     )
 
-    $ErrorMessages = @{
-        # 100 codes are for DAEF context errors and warnings
-        '100' = "There is no [{0}] in the daef context directory [{1}]. This is expected when running context functions for the first time."
-        '101' = "An error occurred while getting the daef context path: {0}"
-        '102' = "The {0} directory does not exists."
-        '103' = "An error occurred while listing the context paths: {0}"
-        '104' = "An error occurred while switching the context: {0}"
-        '105' = "An error occurred while getting the context: {0}"
-        '106' = "An error occurred while writing the context: {0}"
-        '107' = "An error occurred while getting the cluster object: {0}"
-
-        # 200 codes are for DAEF logging errors
-        '200' = "An error occurred while getting the logs path: {0}"
-        '201' = "Failed to create logger configuration"
-
-        # 300 codes are for Fatal errors
-        '300' = "An error occurred while retrieving [{0}]. Error message: [{1}]"
-        '301' = "An error occurred while creating Service Principal on Subscription {0}"
-        '302' = "An error occurred while creating resource group [{0}] at location [{1}]"
-        '303' = "Deployment failed with error message: {0}"
-        '304' = "E4K version not found for Alice Springs version [{0}] in [{1}]"
-        '305' = "An error occured while deploying IIOT App Resources: {0}"
-        '306' = "An error occurred while deploying E4K [{0}] [[{1}]] in namespace [{2}]. Error message: {3}"
-        '307' = "An error occurred while running kubectl apply kustomization on folder {0}"
-        '308' = "An error occurred while creating Service Principal {0}"
-        '309' = "An error occurred while getting the service principal object id."
-        '310' = "An error occurred while initializing Dapr on AKS EE Cluster"
-        '311' = "An error occurred while getting E4K and OPCUA versions from Alice Springs version [{0}] in [{1}]"
-        '312' = "An error occurred while installing [{0}] version [{1}]."
-        '313' = "Please make sure that the Event Hub Endpoint is set in the current context and run the script again"
-        '314' = "Event Hub Endpoint update unsuccessful. Please update the {0} manifest and run the script again"
-        '315' = "Docker is not running. Please start Docker and run the script again."
-        '316' = "Docker is not running. {0} Please start Docker and run the script again."
-        '317' = "An error occurred while logging into ACR {0}. Error message: {1}"
-        '318' = "An unexpected error occurred while executing the command: [{0}]. Error message: [{1}]"
-        '319' = "An error occurred while changing an az cli configuration"
-        '320' = "An error occurred while starting a proxy for Cluster {0} in Resource Group {1}"
-    }
+    $ErrorMessages = $RadErrorMessageManager::$ErrorMessages
 
     if ($ErrorMessages.ContainsKey($ErrorCode)) {
         $formattedMessage = Format-ErrorMessage -Template $ErrorMessages[$ErrorCode] -Parameters $Parameters

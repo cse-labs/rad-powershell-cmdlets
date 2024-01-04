@@ -21,5 +21,5 @@ class RadErrorMessageManager {
 }
 
 # Example usage
-# ErrorManager::LoadErrorCodesFromYaml("C:\Path\To\Your\ErrorCodes.yaml")
-# Write-Host "Error Message: $($ErrorManager::$ErrorMessages['100'])"
+# RadErrorMessageManager::LoadErrorCodesFromYaml("C:\Path\To\Your\ErrorCodes.yaml")
+# Write-Host "Error Message: $($RadErrorMessageManager::$ErrorMessages['100'])"

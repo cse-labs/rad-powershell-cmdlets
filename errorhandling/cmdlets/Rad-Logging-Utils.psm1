@@ -2,10 +2,6 @@
 #  Copyright (c) Microsoft Corporation.  All rights reserved.
 #  Licensed under the MIT License (MIT). See License.txt in the repo root for license information.
 # ------------------------------------------------------------
-# ------------------------------------------------------------
-#  Copyright (c) Microsoft Corporation.  All rights reserved.
-#  Licensed under the MIT License (MIT). See License.txt in the repo root for license information.
-# ------------------------------------------------------------
 
 #.Description
 # Function to get logs path and create a folder if one does not exist

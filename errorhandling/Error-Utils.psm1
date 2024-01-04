@@ -30,7 +30,7 @@ function Get-RadErrorMessage {
     $ErrorMessages = Get-RadErrorMessages
 
     if ($ErrorMessages.ContainsKey($ErrorCode)) {
-        $formattedMessage = Format-ErrorMessage -Template $ErrorMessages[$ErrorCode] -Parameters $Parameters
+        $formattedMessage = Format-RadErrorMessage -Template $ErrorMessages[$ErrorCode] -Parameters $Parameters
         return "Error ${ErrorCode}: $formattedMessage"
     } else {
         return "An unexpected error occurred while executing the command: [{0}]. Error message: [{1}]"

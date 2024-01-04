@@ -112,7 +112,7 @@ function Show-Error {
 
 #.Description
 # Cmdlet for terminating error, throwing terminating error & logging with PoshLog
-function Show-RadFatalError {
+function Show-FatalError {
     param(
         [Parameter(Mandatory=$true)]
         [string]$ErrorMessage

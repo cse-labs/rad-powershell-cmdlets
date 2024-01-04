@@ -27,7 +27,7 @@ Author = 'ISE - SolutionOps'
 CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '(c) 2023 Microsoft. All rights reserved.'
+Copyright = '(c) 2024 Microsoft. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'A proof-of-concept Robust Authoritative and Dynamic (RAD) Error Management Framework for PowerShell'

@@ -47,4 +47,4 @@ In order to run the Polyglot documentation, you need to install the following de
    - [Polyglot Notebook VSCode Extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode)
    - [.NET Version 8.0 or higher](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-This repo is set up with a devcontainer that will automatically install the dependencies for you.
+This repo is set up with a devcontainer that will automatically install the dependencies and is ready to be used. You can open it with [Visual Studio Code](https://code.visualstudio.com/docs/devcontainers/containers) or [GitHub Codespaces](https://github.com/features/codespaces).

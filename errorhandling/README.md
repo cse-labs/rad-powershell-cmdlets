@@ -24,6 +24,9 @@ Error handling is a crucial aspect of script development, ensuring graceful resp
 ### 5. **`Invoke-TerminatingCommand`**
    - Execute a command and terminate the script gracefully upon command failure.
 
+### 6. **`Set-RadErrorMessages`**
+   - Add additional error messages or overwrite existing error messages.
+
 ### Rad-Text-Utils Module
 
 ### 1. **`Confirm-LoggerIsEnabled`**

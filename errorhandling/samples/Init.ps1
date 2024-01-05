@@ -10,6 +10,10 @@ if ($null -eq (Get-Module -ListAvailable -Name powershell-yaml)) {
     Install-Module -Name powershell-yaml -Scope CurrentUser -Force
 }
 
+if ($null -eq (Get-Module -ListAvailable -Name PoShLog)) {
+    Install-Module -Name PoShLog -Scope CurrentUser -Force
+}
+
 # Loading RAD modules
 Import-Module -Name "$scriptDirectory\..\cmdlets\Rad-Error-Utils.psm1" -Force
 Import-Module -Name "$scriptDirectory\..\cmdlets\Rad-Text-Utils.psm1" -Force

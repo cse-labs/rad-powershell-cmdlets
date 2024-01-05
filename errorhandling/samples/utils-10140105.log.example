@@ -1,0 +1,6 @@
+04:48:05 [INF] {"ScriptName":"utils"} # THIS IS A TITLE 
+04:48:10 [INF] {"ScriptName":"utils"} This is an example output 
+04:48:13 [DBG] {"ScriptName":"utils"} This is an example debug output 
+04:48:17 [WRN] {"ScriptName":"utils"} This is an example warning 
+04:48:21 [ERR] {"ScriptName":"utils"} This is an example non-terminating error 
+04:48:24 [FTL] {"ScriptName":"utils"} This is an example terminating error 

@@ -41,3 +41,10 @@ For in-depth explanations, examples, and usage scenarios, refer to the comprehen
 The polyglot documentation provides detailed insights into leveraging error handling capabilities and maximizing the potential of RAD PowerShell Cmdlets in various programming languages.
 
 **Note:** This README serves as a quick overview. Detailed documentation can be found in the polyglot guide linked above.
+
+In order to run the Polyglot documentation, you need to install the following dependencies:
+
+   - [Polyglot Notebook VSCode Extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode)
+   - [.NET Version 8.0 or higher](https://dotnet.microsoft.com/download/dotnet/8.0)
+
+This repo is set up with a devcontainer that will automatically install the dependencies for you.

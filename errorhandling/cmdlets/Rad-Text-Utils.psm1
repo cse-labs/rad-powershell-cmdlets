@@ -85,7 +85,7 @@ function Show-Warning {
     if (Confirm-LoggerIsEnabled) {
         Write-WarningLog $WarningMessage
     } else {
-        $Output = "Warning: " + $WarningMessage
+        $Output = "WARNING: " + $WarningMessage
         Write-Host $Output
     }
 }

@@ -99,7 +99,7 @@ class RadErrorMessageManager {
 
     # Store error codes
     [System.Collections.HashTable] $ErrorMessages = @{
-        "101" = "Error 102: Invalid parameter: {0}. Expected: {1}. Actual: {2}."
+        "101" = "Error 101: Invalid parameter: {0}. Expected: {1}. Actual: {2}."
         "500" = "An unexpected error occurred while executing the command: [{0}]. Error message: [{1}]"
     }
 

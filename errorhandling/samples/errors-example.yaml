@@ -6,3 +6,4 @@ errors:
   102: "TypeError - Mismatched data types or unsupported operations on a data type {0}."
   103: "Unsupported operation - The operation {0} is not supported."
   403: "Authentication error - The user is not authenticated."
+  104: "Docker is not running. Please start Docker and run the script again."

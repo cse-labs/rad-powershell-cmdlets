@@ -12,6 +12,14 @@ Param(
     $SilentMode
 )
 
+if ($null -eq (Get-Module -ListAvailable -Name Az.Accounts)) {
+    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
+}
+
+if ($null -eq (Get-Module -ListAvailable -Name Az.Resources)) {
+    Install-Module -Name Az.Resources -Scope CurrentUser -Force
+}
+
 $ScriptName = $MyInvocation.MyCommand.Name
 
 . .\Init.ps1

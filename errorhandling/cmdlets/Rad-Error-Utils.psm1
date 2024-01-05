@@ -105,7 +105,7 @@ class RadErrorMessageManager {
 
     # Override error codes from a YAML file
     [void] LoadErrorCodesFromYaml($yamlFilePath) {
-        Import-Module -Name PowerShellYaml
+        Import-Module -Name powershell-yaml
         $yamlContent = Get-Content -Path $yamlFilePath -Raw | ConvertFrom-Yaml
 
         if ($yamlContent -and $yamlContent.errors) {

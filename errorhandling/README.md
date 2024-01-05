@@ -37,7 +37,7 @@ Error handling is a crucial aspect of script development, ensuring graceful resp
 
 ## Polyglot Documentation
 
-For in-depth explanations, examples, and usage scenarios, refer to the comprehensive polyglot documentation [here](./examples.ipynb).
+For in-depth explanations, examples, and usage scenarios, refer to the comprehensive polyglot documentation [here](./logging-functions.ipynb).
 The polyglot documentation provides detailed insights into leveraging error handling capabilities and maximizing the potential of RAD PowerShell Cmdlets in various programming languages.
 
 **Note:** This README serves as a quick overview. Detailed documentation can be found in the polyglot guide linked above.

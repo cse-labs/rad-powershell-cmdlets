@@ -81,7 +81,7 @@ function Invoke-TerminatingCommand {
     )
 
     Show-Output "Executing Command: [$Command]"
-    $Result = & $Command
+    $Result = & $Command 2>&1
 
     # Check the execution status of the command
     if ($LASTEXITCODE -ne 0) {
